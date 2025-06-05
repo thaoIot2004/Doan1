@@ -111,7 +111,7 @@ Phía giao diện người quản trị:
 - Trường: Đại học Sư Phạm Kỹ Thuật Thành Phố Hồ Chí Minh
 - Giảng viên hướng dẫn: ThS. Trương Quang Phúc
 - Youtube: https://www.youtube.com/watch?v=RMcZxA5p-UM
-- Liên hệ: thaivm14072004@gmail.com,thaohoccgioi001@gmail.com
+- Liên hệ: thaivm14072004@gmail.com,thaohocgioi001@gmail.com
 
 
 
