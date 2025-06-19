@@ -126,8 +126,9 @@ Phía giao diện người quản trị:
 - Giảng viên hướng dẫn: ThS. Trương Quang Phúc
 - Youtube: https://www.youtube.com/watch?v=RMcZxA5p-UM
 - Liên hệ: thaivm14072004@gmail.com
-
+<br>
   This document was written by [ThaiVM2004] https://github.com/ThaiVM2004 and [thaoIot2004] https://github.com/thaoIot2004
+<br>
 </div>
 
 
