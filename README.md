@@ -3,7 +3,7 @@
 
 ## Giới thiệu
 
-Hệ thống chấm công tự động thông minh là một giải pháp ứng dụng công nghệ nhúng và Internet of Things (IoT) nhằm hiện đại hóa quy trình quản lý nhân sự, thay thế các phương pháp điểm danh thủ công còn tồn tại nhiều hạn chế như gian lận, chấm hộ, sai lệch dữ liệu và khó đồng bộ.
+<div align="justify"> Hệ thống chấm công tự động thông minh là một giải pháp ứng dụng công nghệ nhúng và Internet of Things (IoT) nhằm hiện đại hóa quy trình quản lý nhân sự, thay thế các phương pháp điểm danh thủ công còn tồn tại nhiều hạn chế như gian lận, chấm hộ, sai lệch dữ liệu và khó đồng bộ.
 
 Dự án được thiết kế với mục tiêu xây dựng một hệ thống điểm danh xác thực hai lớp: sử dụng thẻ từ RFID để nhận dạng mã định danh nhân viên và cảm biến vân tay để xác thực sinh trắc học cá nhân. Để tăng cường tính minh bạch và trực quan, hệ thống còn tích hợp ESP32-CAM để chụp ảnh người điểm danh ngay tại thời điểm xác thực. Toàn bộ thông tin (UID, họ tên, thời gian, ảnh) sau khi xử lý sẽ được tự động đồng bộ lên nền tảng lưu trữ Google Sheets thông qua kết nối Wi-Fi.
 
@@ -18,6 +18,7 @@ Hệ thống được triển khai trên ba vi điều khiển độc lập, m�
 Ngoài phần nhúng, hệ thống còn được bổ sung một phần mềm giao diện quản trị (UI Manager) lập trình bằng Python (PyQt5 + PySerial), cho phép người quản trị thực hiện các thao tác như thêm, sửa, xóa nhân viên, gửi lệnh điều khiển và theo dõi log hệ thống theo thời gian thực.
 
 Với kiến trúc phần cứng phân tán, phần mềm linh hoạt và tích hợp nền tảng đám mây, hệ thống này không chỉ phù hợp triển khai trong các doanh nghiệp, nhà máy, trường học mà còn có tiềm năng mở rộng thành một sản phẩm thương mại hóa ứng dụng trong lĩnh vực quản lý nhân sự thông minh.
+
 
 ## Tính năng của hệ thống
 
@@ -38,8 +39,6 @@ Với kiến trúc phần cứng phân tán, phần mềm linh hoạt và tích 
 ## Kiến trúc tổng thể của hệ thống
 
 ![image](https://github.com/user-attachments/assets/0f338bc4-bb6e-4527-bbe3-edd5faf5c69e)
-
-
 
 
 Trong đó: 
@@ -68,6 +67,7 @@ Trong đó:
 | RFID RC522      | Đọc thẻ MIFARE 13.56 MHz                 |
 | OLED SH1106     | Hiển thị trạng thái                      |
 | Thẻ nhớ microSD | Lưu ảnh tạm thời từ ESP32-CAM            |
+
 
 ## Phần mềm của hệ thống
 
@@ -101,17 +101,33 @@ Phía giao diện người quản trị:
 
 ![image](https://github.com/user-attachments/assets/349dd757-8830-4faa-ad90-d40a1894c11e)
 
+## Hướng dẫn sử dụng
+- Bước 1, các bạn truy cập vào folder đã được tải về: DoAn1-main.zip (đã giải nén) -> mở folder VoMinhThai-22139063-PhanThanhThao-22139062.
+- Bước 2, tiến hành mở /hardware/schematic.pdf.
+- Bước 3, đọc sơ đồ nguyên lý và kết nối mạch như sơ đồ, có thể bỏ qua khối nguồn (khối này cấp nguồn hệ thống), bạn có thể nối các khối trong đó lại bỏ qua khối nguồn, thay vào đó cắm nguồn vào chân USB Type C trên vi điều khiển ESP32 Devkit.
+- Bước 4, truy cập vào /firmware và tiến hành tải các file .ino tương ứng về rồi nạp có cho vi điều khiển tuy nhiên trước khi nạp code cần thay đổi một số thứ như sau (tại code ESP32-CAM):
+  - Đầu tiên thông tin wifi: ``` const char* ssid = "Minh Thai";``` 
+                                <br>```const char* password = "01202728759";```
+  - Thay ``` const char* googleScriptId ="https://script.google.com/macros/s/AKfycbx5QKuQZAvtdk5Q6iZ9LmWkVbuHb3sVTyVAgXXFDLXu2BUw-lPJx8uBxhpI-P928gM/exec";```
+    - Các bước thay đổi:
+      - Truy cập trang: Google Sheets vào tạo một Sheets mới, đồng thời đặt tên các header: Date, Time, ID, Fullname
+      - Sau đó chọn vào tiện ích/ extensions -> Apps Script để mở trang tích hợp Script vào cho bảng tính
+        ![image](https://github.com/user-attachments/assets/dbb79fef-1e7e-4b1e-905b-714e9c9413d9)
+      - Tại trang giao diện chính của Apps Script truy cập Deploy -> Manage Deployment -> và copy đoạn dưới đây:
+        ![image](https://github.com/user-attachments/assets/dca2f4aa-d2e3-495c-8296-8e4ca5ca8e59)
+  - Tại /ui có file UI.py bạn có thể vào VS code bấm run hoặc build thành file .exe bằng lệnh ```pyinstaller --onefile --add-data "hcmute.png;." UI.py``` (Đây là giao diện quản trị viên)
 
-
-
+  
 ## Tác giả 
 - Họ và tên: Võ Minh Thái, Phan Thanh Thảo
-- Sinh viên ngành: Hệ thống nhúng và IoT
 - Mã Số sinh viên: 22139063, 22139062
+- Sinh viên ngành: Hệ thống nhúng và IoT
 - Trường: Đại học Sư Phạm Kỹ Thuật Thành Phố Hồ Chí Minh
 - Giảng viên hướng dẫn: ThS. Trương Quang Phúc
 - Youtube: https://www.youtube.com/watch?v=RMcZxA5p-UM
-- Liên hệ: thaivm14072004@gmail.com,thaohocgioi001@gmail.com
+- Liên hệ: thaivm14072004@gmail.com
+<br>This document was written by [ThaiVM2004]https://github.com/ThaiVM2004 and [thaoIot2004]https://github.com/thaoIot2004
+</div>
 
 
 
