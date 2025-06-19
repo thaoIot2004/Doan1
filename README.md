@@ -127,7 +127,7 @@ Phía giao diện người quản trị:
 - Youtube: https://www.youtube.com/watch?v=RMcZxA5p-UM
 - Liên hệ: thaivm14072004@gmail.com
 This document was written by<br>
-[ThaiVM2004](https://github.com/ThaiVM2004)<br>
+[ThaiVM2004](https://github.com/ThaiVM2004)
 and [thaolot2004](https://github.com/thaolot2004)
 
 </div>
